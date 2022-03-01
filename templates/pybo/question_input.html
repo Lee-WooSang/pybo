@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<form action="{% url 'pybo:question_save' %}" method="post">
+    {% csrf_token %}
+    제목 : <input type="text" name="subject" id="subject"
+                value="{{ form.subject.value|default_if_none:'' }}"><br><br>
+    내용 : <textarea name="content" id="content" rows="15">
+                {{ form.content.value|default_if_none:'' }}</textarea><br><br>
+    <input type="submit" value="질문등록">
+</form>
+
+{% endblock %}
